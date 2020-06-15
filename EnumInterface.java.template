@@ -1,0 +1,9 @@
+package <%= package_name %>;
+
+public interface ${interface_name} {
+<%
+  def cap = { s -> s[0].toUpperCase() + s.substring(1) }
+  java_fields.each { e ->
+%>  ${e.value} get${cap(e.key)}();
+<% } %>
+}
