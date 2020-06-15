@@ -1,6 +1,8 @@
 <%import static StaticFunctions.*%>
 package <%= package_name %>;
 
+import java.util.stream.Stream;
+
 public enum ${enum_name} <%= implements_ %>{
 <% items.each { item ->
   next = item != items.last() ? "," : ";"
@@ -26,4 +28,7 @@ public enum ${enum_name} <%= implements_ %>{
     return ${e.key};
   }
 <% } %>
+  public static Stream<<%=enum_name%>> stream() {
+    return Stream.of(<%=enum_name%>.values());
+  }
 }
