@@ -1,0 +1,16 @@
+apply plugin: 'groovy'
+
+version = "1.0"
+description = "com.example.JavaProject"
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  testImplementation('org.spockframework:spock-core:2.0-M3-groovy-3.0')
+}
+
+test {
+  useJUnitPlatform()
+}
