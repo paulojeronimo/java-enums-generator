@@ -1,0 +1,29 @@
+package <%= package_name %>;
+
+public enum ${enum_name} <%= implements_ %>{
+<% items.each { item ->
+  next = item != items.last() ? "," : ";"
+%>  ${item}${next}
+<% } %>
+<%
+  arg_list = ""
+  java_fields_collection = java_fields.collect { e -> "${e.value} ${e.key}" }
+  java_fields_collection.each {
+    arg_list = arg_list + (it != java_fields_collection.last() ? "final ${it}, " : "final ${it}")
+%>  private final $it;
+<% } %>
+  private ${enum_name}(${arg_list}) {
+<% 
+  java_field_names = java_fields.collect { e -> "${e.key}" }
+  java_field_names.each { %>    this.${it} = ${it};
+<% } %>
+  }
+<%
+  def cap = { s -> s[0].toUpperCase() + s.substring(1) }
+  java_fields.each { e ->
+%>
+  public ${e.value} get${cap(e.key)}() {
+    return ${e.key};
+  }
+<% } %>
+}
