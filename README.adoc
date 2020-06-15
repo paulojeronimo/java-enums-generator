@@ -72,28 +72,45 @@ Creating enum com.example.JavaProject.enums.BRState ...
 Creating interface com.example.JavaProject.enums.State ...
 ----
 
-You can see and compile the generated Java classes with the following commands:
+You can see, compile and test the generated Java classes with the following commands:
 
 ----
-$ tree sample.test
-sample.test
+$ tree -a
+.
+|-- .gitignore
+|-- build.gradle
+|-- gradle
+|   `-- wrapper
+|       |-- gradle-wrapper.jar
+|       `-- gradle-wrapper.properties
+|-- gradlew
+|-- gradlew.bat
 `-- src
-    `-- main
-        `-- java
+    |-- main
+    |   `-- java
+    |       `-- com
+    |           `-- example
+    |               `-- JavaProject
+    |                   `-- enums
+    |                       |-- BRRegion.java
+    |                       |-- BRState.java
+    |                       |-- Region.java
+    |                       `-- State.java
+    `-- test
+        `-- groovy
             `-- com
                 `-- example
                     `-- JavaProject
+                        |-- HelloWorldSpec.groovy
                         `-- enums
-                            |-- BRRegion.java
-                            |-- BRState.java
-                            |-- Region.java
-                            `-- State.java
+                            `-- BRStateSpec.groovy
 
-7 directories, 4 files
+15 directories, 12 files
 ----
 
 ----
-$ (cd sample.test/src/main/java && javac com/example/JavaProject/enums/*.java)
+$ ./gradlew clean test
+$ open build/reports/tests/test/index.html
 ----
 
 === If you have Docker installed
