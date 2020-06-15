@@ -7,6 +7,9 @@ slurper = config.slurper
 package_name = slurper.enums.package_name
 package_dir = package_name.replaceAll(/\./, '/')
 
+output_dir = slurper.enums.build_dir
+println "Generating output in directory \"$output_dir\" ..."
+
 def create_interface(o) {
   interface_name = o.get('implements_')
   println "Creating interface $package_name.$interface_name ..."
@@ -23,7 +26,6 @@ def create_interface(o) {
 }
 
 slurper.enums.set.each {
-  output_dir = 'build'
   parsed = new JsonSlurper().parse(new URL(it.getValue().url))
   enum_name = it.getKey()
   println "Creating enum $package_name.${enum_name} ..."

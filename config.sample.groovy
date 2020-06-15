@@ -1,5 +1,6 @@
 enums {
   package_name = 'com.example.JavaProject.enums'
+  build_dir = 'sample.test/src/main/java'
   set {
     BRRegion {
       url = 'https://servicodados.ibge.gov.br/api/v1/localidades/regioes'

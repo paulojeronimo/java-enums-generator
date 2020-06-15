@@ -7,7 +7,7 @@ print "Configuration should define a map of properties ... "
 assert config.slurper.enums instanceof Map
 println "ok!"
 
-keyset = [ 'package_name', 'set' ] as Set
+keyset = [ 'package_name', 'build_dir', 'set' ] as Set
 print "Configuration should have a keySet equals to ${keyset} ... "
 assert config.slurper.enums.keySet() == keyset
 println "ok!"
