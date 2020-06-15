@@ -14,4 +14,6 @@ class StaticFunctions {
   static boolean has_interface(o) { o.containsKey('implements_') }
 
   static String implements_(o) { has_interface(o) ? "implements ${o.get('implements_')} " : "" }
+
+  static String cap(s) { s[0].toUpperCase() + s.substring(1) }
 }
